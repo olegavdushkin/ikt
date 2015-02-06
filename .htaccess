@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+
+  RewriteRule ^/?$ /ua-lang/template.php?path=index [L,QSA]
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^([a-z]{2})/?$ /$1-lang/template.php?path=index [L,QSA]
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^([a-z]{2})/(.*)$ /$1-lang/template.php?path=$2 [L,QSA]
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.*)$ /ua-lang/template.php?path=$1 [L,QSA]
+</IfModule>
